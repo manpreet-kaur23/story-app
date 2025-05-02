@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "464106347062",
+    "project_id": "bookpad-5db9a",
+    "storage_bucket": "bookpad-5db9a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464106347062:android:881caf1ba5babffa079697",
+        "android_client_info": {
+          "package_name": "com.example.bookpad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtXeQGILokTP2UnKxH2m0Es1Ww8LyAiJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
