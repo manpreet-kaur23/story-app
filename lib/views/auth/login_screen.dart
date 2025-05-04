@@ -1,4 +1,5 @@
 import 'package:bookpad/constants/custom_colors.dart';
+import 'package:bookpad/services/auth_services/auth_services.dart';
 import 'package:bookpad/views/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,14 +11,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService authService = AuthService();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool _obscureText = true;
+  String? errorMessage;
 
   void _togglePassword() {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  Future<String?> _login() {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+    return authService.signInWithEmail(email, password);
   }
 
   @override
@@ -27,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          color: Colors.red[600],
+          color: AppColors.mossGreen,
           child: Column(
             children: [
               SizedBox(
@@ -86,6 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                    Text(errorMessage ?? '',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    SizedBox(height: 20),
                     TextButton(
                         onPressed: (){},
                         child: Text("Forgot password?",
@@ -97,7 +110,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: (){},
+                      onPressed: () async {
+                        String? result = await _login();
+                        if (result == null) {
+                          Navigator.pushNamedAndRemoveUntil(context, '/bottomBar', (route) => false);
+                        } else {
+                          setState(() {
+                            errorMessage = result;
+                          });
+                        }
+                      },
                       child: Text("Login",
                         style: TextStyle(
                             color: Colors.white,

@@ -1,15 +1,15 @@
 class UserModel {
-  final String userId;
+  final String? userId;
   final String username;
-  final String name;
+  final String? name;
   final String email;
   final String? profileUrl;
   final String? bio;
 
   UserModel({
-    required this.userId,
+    this.userId,
     required this.username,
-    required this.name,
+    this.name,
     required this.email,
     this.profileUrl,
     this.bio

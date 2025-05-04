@@ -1,3 +1,6 @@
+import 'package:bookpad/constants/custom_colors.dart';
+import 'package:bookpad/models/user_model.dart';
+import 'package:bookpad/services/auth_services/auth_services.dart';
 import 'package:bookpad/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +12,12 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final AuthService authService = AuthService();
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool _obscureText = true;
+  String? errorMessage;
 
   void _togglePassword() {
     setState(() {
@@ -20,14 +25,20 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
+  Future<String?> _signUp() {
+    UserModel userModel = UserModel(username: usernameController.text.trim(), email: emailController.text.trim());
+    String password = passwordController.text.trim();
+    return authService.signupWithEmail(userModel, password);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.cream,
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          color: Colors.red[600],
+          color: AppColors.mossGreen,
           child: Column(
             children: [
               SizedBox(
@@ -58,7 +69,7 @@ class _SignupScreenState extends State<SignupScreen> {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.cream,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
                 ),
                 child: Column(
@@ -96,9 +107,22 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
+                    Text(errorMessage ?? '',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    SizedBox(height: 40),
                     ElevatedButton(
-                      onPressed: (){},
+                      onPressed: () async {
+                        String? result = await _signUp();
+                        if (result == null) {
+                          Navigator.pushNamedAndRemoveUntil(context, '/bottomBar', (route) => false);
+                        } else {
+                          setState(() {
+                            errorMessage = result;
+                          });
+                        }
+                      },
                       child: Text("Create Account",
                         style: TextStyle(
                             color: Colors.white,

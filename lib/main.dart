@@ -1,4 +1,5 @@
 import 'package:bookpad/constants/app_theme.dart';
+import 'package:bookpad/widgets/bottom_bar.dart';
 import 'views/home/home_screen.dart';
 import 'views/splash/splash_screen.dart';
 import 'views/auth/login_screen.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/splash': (context) => SplashScreen(),
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
+        '/bottomBar': (context) => BottomBar(),
         '/home': (context) => HomeScreen(),
         '/search': (context) => SearchScreen(),
         '/bookmark': (context) => BookmarkScreen(),
