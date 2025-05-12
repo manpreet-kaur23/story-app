@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bookpad/views/story_upload/story_upload_screen.dart';
+import 'package:bookpad/views/story_upload/chapter_content.dart';
 
 class AddScreen extends StatelessWidget {
   const AddScreen({super.key});
@@ -13,14 +14,14 @@ class AddScreen extends StatelessWidget {
             title: Text("Write summary"),
             leading: Icon(Icons.edit_note),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => StoryUploadScreen(isStoryMode: false)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => StoryUploadScreen()));
             },
           ),
           ListTile(
             title: Text("Write new story"),
             leading: Icon(Icons.menu_book),
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => StoryUploadScreen(isStoryMode: true)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChapterContent()));
             },
           ),
           ListTile(

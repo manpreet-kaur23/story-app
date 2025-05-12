@@ -41,7 +41,7 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.mossGreen,
-          fixedSize: Size(200, 50),
+          fixedSize: Size(300, 50),
           padding: EdgeInsets.all(10),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)),),
         )

@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CommentModel {
-  final String commentId;
+  final String? commentId;
   final String userId;  // foreign key - userId (UserModel)
   final String comment;
   final DateTime timestamp;
 
   CommentModel({
-    required this.commentId,
+    this.commentId,
     required this.userId,
     required this.comment,
     required this.timestamp

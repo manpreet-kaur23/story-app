@@ -1,8 +1,12 @@
 import 'package:bookpad/constants/custom_colors.dart';
+import 'package:bookpad/services/auth_services/auth_services.dart';
+import 'package:bookpad/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileDrawer extends StatelessWidget {
-  const ProfileDrawer({super.key});
+  ProfileDrawer({super.key});
+
+  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +71,10 @@ class ProfileDrawer extends StatelessWidget {
                   color: Colors.red
               ),
             ),
-            onTap: (){},
+            onTap: (){
+              authService.signOut();
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
+            },
           )
         ],
       ),

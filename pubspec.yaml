@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.20.2
   shared_preferences: ^2.5.3
   logger: ^2.5.0
+  riverpod: ^2.6.1
 
 dev_dependencies:
   flutter_test:

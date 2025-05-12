@@ -1,10 +1,10 @@
 class BookmarkModel {
-  final String bookmarkId;
+  final String? bookmarkId;
   final String userId;  // foreign key - userId (UserModel)
-  final String storyId; // foreign key - storyId (StoryModel)
+  final String? storyId; // foreign key - storyId (StoryModel)
 
   BookmarkModel({
-    required this.bookmarkId,
+    this.bookmarkId,
     required this.userId,
     required this.storyId
   });

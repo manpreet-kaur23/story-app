@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StoryModel {
-  final String storyId;
+  final String? storyId;
   final String authorId;  // foreign key - userId (UserModel)
   final String title;
   final String summary;
@@ -15,7 +15,7 @@ class StoryModel {
   final DateTime createdAt;
 
   StoryModel({
-    required this.storyId,
+    this.storyId,
     required this.authorId,
     required this.title,
     required this.summary,
